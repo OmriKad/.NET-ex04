@@ -1,20 +1,25 @@
-﻿using System.Diagnostics.Contracts;
+﻿using System;
 
 namespace Ex04.Menus.Test
 {
-    public class Program : Menus.Interfaces.IMenuItemListener
+    public class Program
     {
         public static void Main()
         {
-            void ActivateFuncion(string i_FunctionName)
+            FirstMenu firstMenu = new FirstMenu();
+
+            try
             {
-
+                firstMenu.RunFirstMenu();
+                // Uncomment the following lines to run the second menu
+                // SecondMenu secondMenu = new SecondMenu();
+                // secondMenu.RunSecondMenu();
             }
-        }
-
-        public void ActivateFunction(string i_FunctionName)
-        {
-            throw new System.NotImplementedException();
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
     }
 }
