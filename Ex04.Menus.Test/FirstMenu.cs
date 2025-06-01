@@ -2,19 +2,19 @@
 
 namespace Ex04.Menus.Test
 {
-    public class FirstMenu : Menus.Interfaces.IMenuItemListener
+    public class FirstMenu : IMenuItemListener
     {
         private Functions m_Functions;
         private MainMenu m_mainMenu;
 
-        public void ActivateFunction(string i_FunctionName)
+        void IMenuItemListener.ActivateFunction(string i_FunctionName)
         {
             if (m_Functions == null)
             {
                 m_Functions = new Functions();
             }
 
-            switch(i_FunctionName)
+            switch (i_FunctionName)
             {
                 case "Show Version":
                     m_Functions.ShowVersion();
@@ -40,14 +40,14 @@ namespace Ex04.Menus.Test
             MenuItem dateMenuItem = new MenuItem { Title = "Show Current Date", IsActionItem = true, ActionListener = this };
             MenuItem timeMenuItem = new MenuItem { Title = "Show Current Time", IsActionItem = true, ActionListener = this };
             MenuItem lowerCaseMenuItem = new MenuItem { Title = "Count Lowercase Letters", IsActionItem = true, ActionListener = this };
-            MenuItem LettersAndVersionSubMenu = new MenuItem { Title = "Letters and Version" };
-            MenuItem DateTimeSubMenu = new MenuItem { Title = "Show Current Date/Time" };
-            LettersAndVersionSubMenu.AddSubMenu(versionMenuItem);
-            LettersAndVersionSubMenu.AddSubMenu(lowerCaseMenuItem);
-            DateTimeSubMenu.AddSubMenu(dateMenuItem);
-            DateTimeSubMenu.AddSubMenu(timeMenuItem);
-            mainMenuItem.AddSubMenu(LettersAndVersionSubMenu);
-            mainMenuItem.AddSubMenu(DateTimeSubMenu);
+            MenuItem lettersAndVersionSubMenu = new MenuItem { Title = "Letters and Version" };
+            MenuItem dateTimeSubMenu = new MenuItem { Title = "Show Current Date/Time" };
+            lettersAndVersionSubMenu.AddSubMenu(versionMenuItem);
+            lettersAndVersionSubMenu.AddSubMenu(lowerCaseMenuItem);
+            dateTimeSubMenu.AddSubMenu(dateMenuItem);
+            dateTimeSubMenu.AddSubMenu(timeMenuItem);
+            mainMenuItem.AddSubMenu(lettersAndVersionSubMenu);
+            mainMenuItem.AddSubMenu(dateTimeSubMenu);
             m_mainMenu = new MainMenu();
             m_mainMenu.SetEntryMenu(mainMenuItem);
             m_mainMenu.Show();

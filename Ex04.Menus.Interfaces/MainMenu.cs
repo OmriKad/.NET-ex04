@@ -27,7 +27,8 @@ namespace Ex04.Menus.Interfaces
             {
                 int numOfSubItems = i_CurrentItem.GetNumOfSubItems();
                 Console.Clear();
-                Console.WriteLine($"===={i_CurrentItem.Title}====\n");
+                Console.WriteLine($"** {i_CurrentItem.Title} **");
+                Console.WriteLine("-----------------------------");
                 for (int i = 0; i < numOfSubItems; i++)
                 {
                     Console.WriteLine($"{i + 1}. {i_CurrentItem.GetSubItem(i).Title}");
