@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Ex04.Menus.Interfaces
+namespace Ex04.Menus.Events
 {
-    public class MenuItem : IMenuItem
+    public class MenuItem
     {
         private string m_Title = "";
         private bool m_IsActionItem = false;
-        private IMenuItemListener m_Listener = null;
+        public event Action<MenuItem> Clicked;
         private readonly List<MenuItem> r_SubItems = new List<MenuItem>();
         public string Title
         {
@@ -19,24 +19,6 @@ namespace Ex04.Menus.Interfaces
         {
             get { return m_IsActionItem; }
             set { m_IsActionItem = value; }
-        }
-
-        public IMenuItemListener ActionListener
-        {
-            get { return m_Listener; }
-            set { m_Listener = value; }
-        }
-
-        public void Execute()
-        {
-            if (m_Listener != null)
-            {
-                m_Listener.ActivateFunction(m_Title);
-            }
-            else
-            {
-                throw new InvalidOperationException("No listener is set for this menu item.");
-            }
         }
 
         public void AddSubMenu(MenuItem i_SubMenu)
@@ -67,6 +49,26 @@ namespace Ex04.Menus.Interfaces
             }
 
             return r_SubItems[i_Index];
+        }
+
+        public void ExecuteAction()
+        {
+            if (IsActionItem)
+            {
+                OnClicked();
+            }
+            else
+            {
+                throw new InvalidOperationException("This menu item is not an action item.");
+            }
+        }
+
+        protected virtual void OnClicked()
+        {
+            if (Clicked != null)
+            {
+                Clicked.Invoke(this);
+            }
         }
     }
 }

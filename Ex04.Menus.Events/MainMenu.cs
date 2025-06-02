@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Ex04.Menus.Interfaces
+namespace Ex04.Menus.Events
 {
     public class MainMenu
     {
@@ -54,15 +54,8 @@ namespace Ex04.Menus.Interfaces
 
                 if (selectedItem.IsActionItem)
                 {
-                    if (selectedItem.ActionListener == null)
-                    {
-                        Console.WriteLine("This menu item does not have an action listener assigned.");
-                        Console.ReadKey();
-                        continue;
-                    }
-
                     Console.Clear();
-                    selectedItem.Execute();
+                    selectedItem.ExecuteAction();
                     Console.WriteLine("Press any key to continue...");
                     Console.ReadKey();
                 }

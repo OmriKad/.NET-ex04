@@ -7,13 +7,11 @@ namespace Ex04.Menus.Test
         public static void Main()
         {
             FirstMenu firstMenu = new FirstMenu();
-
+            SecondMenu secondMenu = new SecondMenu();
             try
             {
                 firstMenu.RunFirstMenu();
-                // Uncomment the following lines to run the second menu
-                // SecondMenu secondMenu = new SecondMenu();
-                // secondMenu.RunSecondMenu();
+                secondMenu.RunSecondMenu();
             }
             catch (Exception e)
             {

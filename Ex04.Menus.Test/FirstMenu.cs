@@ -5,7 +5,7 @@ namespace Ex04.Menus.Test
     public class FirstMenu : IMenuItemListener
     {
         private Functions m_Functions;
-        private MainMenu m_mainMenu;
+        private MainMenu m_MainMenu;
 
         void IMenuItemListener.ActivateFunction(string i_FunctionName)
         {
@@ -35,7 +35,7 @@ namespace Ex04.Menus.Test
 
         public void RunFirstMenu()
         {
-            MenuItem mainMenuItem = new MenuItem { Title = "Main Menu" };
+            MenuItem mainMenuItem = new MenuItem { Title = "Iterface Main Menu" };
             MenuItem versionMenuItem = new MenuItem { Title = "Show Version", IsActionItem = true, ActionListener = this };
             MenuItem dateMenuItem = new MenuItem { Title = "Show Current Date", IsActionItem = true, ActionListener = this };
             MenuItem timeMenuItem = new MenuItem { Title = "Show Current Time", IsActionItem = true, ActionListener = this };
@@ -48,9 +48,9 @@ namespace Ex04.Menus.Test
             dateTimeSubMenu.AddSubMenu(timeMenuItem);
             mainMenuItem.AddSubMenu(lettersAndVersionSubMenu);
             mainMenuItem.AddSubMenu(dateTimeSubMenu);
-            m_mainMenu = new MainMenu();
-            m_mainMenu.SetEntryMenu(mainMenuItem);
-            m_mainMenu.Show();
+            m_MainMenu = new MainMenu();
+            m_MainMenu.SetEntryMenu(mainMenuItem);
+            m_MainMenu.Show();
         }
     }
 }
