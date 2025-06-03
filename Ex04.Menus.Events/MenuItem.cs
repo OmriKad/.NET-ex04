@@ -7,7 +7,7 @@ namespace Ex04.Menus.Events
     {
         private string m_Title = "";
         private bool m_IsActionItem = false;
-        public event Action<MenuItem> Clicked;
+        public event Action Clicked = null;
         private readonly List<MenuItem> r_SubItems = new List<MenuItem>();
         public string Title
         {
@@ -67,7 +67,7 @@ namespace Ex04.Menus.Events
         {
             if (Clicked != null)
             {
-                Clicked.Invoke(this);
+                Clicked.Invoke();
             }
         }
     }

@@ -15,13 +15,13 @@ namespace Ex04.Menus.Test
             mainMenuItem.AddSubMenu(lettersAndVersionSubMenu);
             mainMenuItem.AddSubMenu(dateTimeSubMenu);
             MenuItem versionMenuItem = new MenuItem { Title = "Show Version", IsActionItem = true };
-            versionMenuItem.Clicked += actionItemWasClicked;
+            versionMenuItem.Clicked += r_Functions.ShowVersion;
             MenuItem lowerCaseMenuItem = new MenuItem { Title = "Count Lowercase Letters", IsActionItem = true };
-            lowerCaseMenuItem.Clicked += actionItemWasClicked;
+            lowerCaseMenuItem.Clicked += r_Functions.CountLowerLetters;
             MenuItem dateMenuItem = new MenuItem { Title = "Show Current Date", IsActionItem = true };
-            dateMenuItem.Clicked += actionItemWasClicked;
+            dateMenuItem.Clicked += r_Functions.ShowCurrentDate;
             MenuItem timeMenuItem = new MenuItem { Title = "Show Current Time", IsActionItem = true };
-            timeMenuItem.Clicked += actionItemWasClicked;
+            timeMenuItem.Clicked += r_Functions.ShowCurrentTime;
             lettersAndVersionSubMenu.AddSubMenu(versionMenuItem);
             lettersAndVersionSubMenu.AddSubMenu(lowerCaseMenuItem);
             dateTimeSubMenu.AddSubMenu(dateMenuItem);
@@ -29,27 +29,6 @@ namespace Ex04.Menus.Test
             m_MainMenu = new MainMenu();
             m_MainMenu.SetEntryMenu(mainMenuItem);
             m_MainMenu.Show();
-        }
-
-        private void actionItemWasClicked(MenuItem i_Invoker)
-        {
-            switch (i_Invoker.Title)
-            {
-                case "Show Version":
-                    r_Functions.ShowVersion();
-                    break;
-                case "Count Lowercase Letters":
-                    r_Functions.CountLowerLetters();
-                    break;
-                case "Show Current Date":
-                    r_Functions.ShowCurrentDate();
-                    break;
-                case "Show Current Time":
-                    r_Functions.ShowCurrentTime();
-                    break;
-                default:
-                    throw new System.ArgumentException("Invalid function name");
-            }
         }
     }
 }
